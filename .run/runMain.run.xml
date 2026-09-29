@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="runMain" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="ru.sablin.lab3.Main" />
+    <module name="third-laboratory-work-on-programming-in-Java-high-level-languages" />
+    <option name="VM_PARAMETERS" value="--enable-native-access=ALL-UNNAMED" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
