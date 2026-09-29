@@ -4,5 +4,7 @@ package ru.sablin.lab3;
 public class Main {
     static void main(String[] args) {
         outputFunctions.simpleLog("Запуск программы");
+        outputFunctions.debugLog("Дебаг проверка");
+        outputFunctions.warningLog("Проверка вывода ошибки");
     }
 }
