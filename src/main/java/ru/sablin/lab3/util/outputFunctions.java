@@ -1,4 +1,4 @@
-package ru.sablin.lab3;
+package ru.sablin.lab3.util;
 
 import org.fusesource.jansi.AnsiConsole;
 
