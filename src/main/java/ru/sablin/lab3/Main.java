@@ -1,20 +1,17 @@
 package ru.sablin.lab3;
 
 
+import ru.sablin.lab3.model.Cameras;
 import ru.sablin.lab3.util.outputFunctions;
 
 import javax.swing.*;
 
 public class Main {
-    static void main(String[] args) {
-        outputFunctions.simpleLog("Запуск программы");
-        outputFunctions.debugLog("Дебаг проверка");
-        outputFunctions.warningLog("Проверка вывода ошибки");
-
+    public static void createWindowUI(){
         JFrame frame = new JFrame("Таблица/фотоаппараты");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        gui form = new gui();
+        Gui form = new Gui();
 
         frame.setContentPane(form.getContentPane());
         JPanel content = form.getContentPane();
@@ -31,5 +28,25 @@ public class Main {
         frame.setMinimumSize(new java.awt.Dimension(500, 400));
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+    }
+
+    public static Cameras createNewCamera(String model, String brand, double megapixels,
+                                double price, int year, String equipment,
+                                String completeLens){
+        outputFunctions.simpleLog("Создана новая камера: " + brand + " " + model);
+
+        return new Cameras(model, brand, megapixels, price, year,
+                equipment, completeLens);
+    }
+
+    static void main(String[] args) {
+        outputFunctions.simpleLog("Запуск программы");
+        outputFunctions.debugLog("Дебаг проверка");
+        outputFunctions.warningLog("Проверка вывода ошибки");
+
+        createWindowUI();
+
+        Cameras camera = createNewCamera("D600", "Nikon", 24.1,
+                58000, 2012, "body", "None");
     }
 }
