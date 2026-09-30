@@ -20,7 +20,7 @@ public class Cameras {
     // Комплектный детектив (если комлект без объектива, "нет")
     public String completeLens;
 
-    public Cameras(String model, String brand, int megapixels,
+    public Cameras(String model, String brand, double megapixels,
                    double price, int year, String equipment,
                    String completeLens) {
         this.model = model;
