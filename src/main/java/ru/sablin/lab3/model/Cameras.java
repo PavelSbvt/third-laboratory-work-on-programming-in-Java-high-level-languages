@@ -12,17 +12,22 @@ public class Cameras {
     // количество мегапикселей матрицы
     private double megapixels;
     // цена камеры
-    private double price;
+    private int price;
     // год производства
     private int year;
     // комплектация (например, kit или body)
     private String equipment;
     // Комплектный детектив (если комлект без объектива, "нет")
-    public String completeLens;
+    private String completeLens;
+    // Серийный номер
+    private int serialNumber;
+    // Пробег
+    private int mileageOfCamera;
 
     public Cameras(String model, String brand, double megapixels,
-                   double price, int year, String equipment,
-                   String completeLens) {
+                   int price, int year, String equipment,
+                   String completeLens, int serialNumber,
+                   int mileageOfCamera) {
         this.model = model;
         this.brand = brand;
         this.megapixels = megapixels;
@@ -30,6 +35,8 @@ public class Cameras {
         this.year = year;
         this.equipment = equipment;
         this.completeLens = completeLens;
+        this.serialNumber = serialNumber;
+        this.mileageOfCamera = mileageOfCamera;
     }
 
     // Геттеры
@@ -42,7 +49,7 @@ public class Cameras {
     public double getMegapixels() {
         return megapixels;
     }
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
     public int getYear() {
@@ -53,6 +60,12 @@ public class Cameras {
     }
     public String getCompleteLens() {
         return completeLens;
+    }
+    public int getSerialNumber() {
+        return serialNumber;
+    }
+    public int getMileageOfCamera() {
+        return mileageOfCamera;
     }
 
 
@@ -66,7 +79,7 @@ public class Cameras {
     public void setMegapixels(double megapixels) {
         this.megapixels = megapixels;
     }
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
     }
     public void setYear(int year) {
@@ -75,8 +88,13 @@ public class Cameras {
     public void setEquipment(String equipment){
         this.equipment = equipment;
     }
-
+    public void setSerialNumber(int serialNumber) {
+        this.serialNumber = serialNumber;
+    }
     public void setCompleteLens(String completeLens) {
         this.completeLens = completeLens;
+    }
+    public void setMileageOfCamera(int mileageOfCamera){
+        this.mileageOfCamera = mileageOfCamera;
     }
 }
