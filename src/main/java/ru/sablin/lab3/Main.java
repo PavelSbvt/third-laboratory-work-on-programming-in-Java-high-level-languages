@@ -1,6 +1,8 @@
 package ru.sablin.lab3;
 
 
+import ru.sablin.lab3.util.outputFunctions;
+
 import javax.swing.*;
 
 public class Main {
@@ -12,7 +14,7 @@ public class Main {
         JFrame frame = new JFrame("Таблица/фотоаппараты");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        programmUI form = new programmUI();
+        gui form = new gui();
 
         frame.setContentPane(form.getContentPane());
         JPanel content = form.getContentPane();
