@@ -19,6 +19,13 @@ public class Gui {
     private JPanel addCameraPanel;
     private JLabel labelAddCameraToTable;
     private JScrollPane scrollPaneForTable;
+    private JPanel lightPanelIntoPanelForAddCamera;
+    private JLabel labelInputModel;
+    private JTextField textFieldInputCameraModel;
+    private JTextField textFieldForInputCameraBrand;
+    private JLabel labelCameraBrandInput;
+    private JTextField textFieldForInputCountMegapixels;
+    private JLabel labelForInputMegapixels;
 
     private static final String[] COLUMNS = {
             "Модель", "Бренд", "Мп", "Цена", "Год", "Комплектация", "Объектив", "Серийный номер", "Пробег"
@@ -41,6 +48,7 @@ public class Gui {
         table1.setDefaultRenderer(Object.class, centerRenderer);
 
         inputCountStrings.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 3));
+        lightPanelIntoPanelForAddCamera.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         outputFunctions.debugLog("Конструктор класса GUI");
     }
