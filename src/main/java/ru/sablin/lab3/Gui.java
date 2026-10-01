@@ -1,6 +1,8 @@
 package ru.sablin.lab3;
 
 import ru.sablin.lab3.model.Cameras;
+import ru.sablin.lab3.model.CamerasManager;
+import ru.sablin.lab3.util.outputFunctions;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -11,7 +13,7 @@ public class Gui {
     private JPanel contentPane;
 
     private static final String[] COLUMNS = {
-            "Модель", "Бренд", "Мп", "Цена", "Год", "Комплектация", "Объектив"
+            "Модель", "Бренд", "Мп", "Цена", "Год", "Комплектация", "Объектив", "Серийный номер", "Пробег"
     };
 
     public Gui() {
@@ -30,6 +32,8 @@ public class Gui {
         // Собираем панель
         contentPane = new JPanel(new java.awt.BorderLayout());
         contentPane.add(scroll, java.awt.BorderLayout.CENTER);
+
+        outputFunctions.debugLog("Конструктор класса GUI");
     }
 
     public void addCamera(Cameras camera) {
@@ -40,8 +44,16 @@ public class Gui {
                 camera.getPrice(),
                 camera.getYear(),
                 camera.getEquipment(),
-                camera.getCompleteLens()
+                camera.getCompleteLens(),
+                camera.getSerialNumber(),
+                camera.getMileageOfCamera()
         });
+    }
+
+    public void addCameras(CamerasManager manager) {
+        for (Cameras camera : manager.getCameras()) {
+            addCamera(camera);
+        }
     }
 
     public JPanel getContentPane() {
