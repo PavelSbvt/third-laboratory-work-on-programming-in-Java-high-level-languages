@@ -102,5 +102,9 @@ public class CamerasManager{
         outputFunctions.simpleLog(String.format("Создано камер: %d, модель - %s," +
                 " марка - %s", quantity, model, brand));
     }
+
+    public List<Cameras> getCameras() {
+        return camerasNikonD600;
+    }
 }
 
