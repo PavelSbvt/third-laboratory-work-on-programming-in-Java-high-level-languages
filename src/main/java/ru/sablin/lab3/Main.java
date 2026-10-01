@@ -36,11 +36,9 @@ public class Main {
     static void main(String[] args) {
         outputFunctions.simpleLog("Запуск программы");
 
-        createWindowUI();
-
         CamerasManager manager = new CamerasManager();
 
-        manager.createCamerasNikonInQuantity(5, "D600", "Nikon", 24.1);
+        manager.createCamerasNikonInQuantity(11, "D600", "Nikon", 24.1);
 
         Gui gui = createWindowUI();
         gui.addCameras(manager);

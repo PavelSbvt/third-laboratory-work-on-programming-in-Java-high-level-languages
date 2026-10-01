@@ -11,27 +11,23 @@ public class Gui {
     private DefaultTableModel tableModel;
     private JTable table1;
     private JPanel contentPane;
+    private JLabel titleForInputCountColumnsUserWants;
+    private JTextField inputCountColumns;
+    private JLabel windowTitle;
 
     private static final String[] COLUMNS = {
             "Модель", "Бренд", "Мп", "Цена", "Год", "Комплектация", "Объектив", "Серийный номер", "Пробег"
     };
 
     public Gui() {
-        // Создаём модель таблицы
         tableModel = new DefaultTableModel(COLUMNS, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
-                return true; // ручной ввод разрешён
+                return true;
             }
         };
-        table1 = new JTable(tableModel);
 
-        // Оборачиваем таблицу в скролл
-        JScrollPane scroll = new JScrollPane(table1);
-
-        // Собираем панель
-        contentPane = new JPanel(new java.awt.BorderLayout());
-        contentPane.add(scroll, java.awt.BorderLayout.CENTER);
+        table1.setModel(tableModel);
 
         outputFunctions.debugLog("Конструктор класса GUI");
     }
