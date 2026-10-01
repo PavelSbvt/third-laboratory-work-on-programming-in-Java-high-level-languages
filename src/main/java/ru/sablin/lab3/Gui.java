@@ -26,6 +26,19 @@ public class Gui {
     private JLabel labelCameraBrandInput;
     private JTextField textFieldForInputCountMegapixels;
     private JLabel labelForInputMegapixels;
+    private JLabel labelForInputCameraPrice;
+    private JTextField textFieldForInputCameraPrice;
+    private JLabel labelForInputCameraYearBuilding;
+    private JTextField textFieldForInputCameraYearBuilding;
+    private JLabel labelForInputCameraEquipment;
+    private JTextField textFieldForInputCameraEquipment;
+    private JLabel labelInputCameraLens;
+    private JTextField textFieldForInputCameraLens;
+    private JLabel labelForInputCameraSerialNumber;
+    private JTextField textFieldForInputCameraSerialNumber;
+    private JLabel labelForInputCameraMileage;
+    private JTextField textFieldForInputCameraMileage;
+    private JButton buttonForAddNewCameraToTable;
 
     private static final String[] COLUMNS = {
             "Модель", "Бренд", "Мп", "Цена", "Год", "Комплектация", "Объектив", "Серийный номер", "Пробег"
