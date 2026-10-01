@@ -32,10 +32,6 @@ public class Gui {
         contentPane.add(scroll, java.awt.BorderLayout.CENTER);
     }
 
-    public JPanel getContentPane() {
-        return contentPane;
-    }
-
     public void addCamera(Cameras camera) {
         tableModel.addRow(new Object[]{
                 camera.getModel(),
@@ -46,5 +42,9 @@ public class Gui {
                 camera.getEquipment(),
                 camera.getCompleteLens()
         });
+    }
+
+    public JPanel getContentPane() {
+        return contentPane;
     }
 }
