@@ -36,29 +36,26 @@ public class outputFunctions {
         totalHours += 3;
         currentHour = totalHours % HOURS_PER_DAY;
 
-        String helpSeconds = ""; // Вспомогательная строка для подставленеия 0 перед секундами, если значение секунд менее 10
+        String helpSeconds = "";
 
         if (currentSecond < 10){
             helpSeconds = "0";
         }
 
-        String helpMinutes = ""; // Вспомогательная строка для подставленеия 0 перед минутами, если значение минут менее 10
+        String helpMinutes = "";
 
         if (currentMinute < 10){
             helpMinutes = "0";
         }
 
-        String helpHours = ""; // Вспомогательная строка для подставленеия 0 перед часами выбранного часового пояса, если значение часов менее 10
+        String helpHours = "";
 
         if (currentHour < 10){
             helpHours = "0";
         }
 
-        String outputStringTime = String.format("[%s%d:%s%d:%s%d]",
+        return String.format("[%s%d:%s%d:%s%d]",
                 helpHours, currentHour,helpMinutes, currentMinute, helpSeconds, currentSecond);
-
-//        System.out.println(outputStringTime);
-        return outputStringTime;
     }
 
     public static void simpleLog(String message) {
