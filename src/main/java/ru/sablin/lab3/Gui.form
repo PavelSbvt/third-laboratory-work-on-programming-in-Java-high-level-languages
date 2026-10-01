@@ -1,34 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="ru.sablin.lab3.Gui">
-  <grid id="27dc6" binding="contentPane" layout-manager="GridLayoutManager" row-count="5" column-count="8" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="contentPane" layout-manager="GridLayoutManager" row-count="6" column-count="9" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="1289" height="574"/>
+      <xy x="20" y="20" width="1319" height="761"/>
     </constraints>
     <properties>
       <background color="-608617"/>
     </properties>
     <border type="none"/>
     <children>
-      <vspacer id="a848d">
-        <constraints>
-          <grid row="4" column="0" row-span="1" col-span="8" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-        </constraints>
-      </vspacer>
       <vspacer id="65d48">
         <constraints>
-          <grid row="1" column="0" row-span="1" col-span="8" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="0" row-span="1" col-span="9" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
         </constraints>
       </vspacer>
       <hspacer id="6f22d">
         <constraints>
-          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
       </hspacer>
-      <grid id="5729" binding="panelForInputCountStrings" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="5729" binding="panelForInputCountStrings" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="10" left="10" bottom="10" right="10"/>
         <constraints>
-          <grid row="0" column="3" row-span="1" col-span="5" vsize-policy="3" hsize-policy="3" anchor="4" fill="2" indent="0" use-parent-layout="false">
+          <grid row="0" column="4" row-span="1" col-span="5" vsize-policy="3" hsize-policy="3" anchor="4" fill="2" indent="0" use-parent-layout="false">
             <maximum-size width="250" height="-1"/>
           </grid>
         </constraints>
@@ -39,7 +34,7 @@
         <children>
           <component id="ead80" class="javax.swing.JLabel" binding="titleForInputCountStringsUserWants">
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <background color="-2516357"/>
@@ -52,7 +47,7 @@
           </component>
           <component id="a15c" class="javax.swing.JTextField" binding="inputCountStrings">
             <constraints>
-              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
                 <maximum-size width="50" height="30"/>
               </grid>
@@ -64,12 +59,27 @@
               <horizontalAlignment value="0"/>
             </properties>
           </component>
+          <component id="a521a" class="javax.swing.JButton" binding="buttonForCreateTableByInputCountStrings">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <minimum-size width="150" height="-1"/>
+                <maximum-size width="200" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-727079"/>
+              <font name="JetBrains Mono" size="10" style="1"/>
+              <foreground color="-13559790"/>
+              <horizontalAlignment value="0"/>
+              <text value="Добавить в таблицу таблицу"/>
+            </properties>
+          </component>
         </children>
       </grid>
       <grid id="5e77d" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="10" left="10" bottom="10" right="10"/>
         <constraints>
-          <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false">
+          <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false">
             <maximum-size width="180" height="-1"/>
           </grid>
         </constraints>
@@ -94,7 +104,7 @@
       <grid id="ef663" binding="addCameraPanel" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="10" left="10" bottom="10" right="10"/>
         <constraints>
-          <grid row="3" column="0" row-span="1" col-span="4" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="3" column="0" row-span="1" col-span="9" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <background color="-13559790"/>
@@ -107,7 +117,7 @@
             </constraints>
             <properties>
               <font name="JetBrains Mono" size="12" style="1"/>
-              <foreground color="-727079"/>
+              <foreground color="-609390"/>
               <text value="Добавить камеру"/>
             </properties>
           </component>
@@ -328,14 +338,14 @@
               <background color="-3613"/>
               <font name="JetBrains Mono" size="12" style="1"/>
               <foreground color="-13559790"/>
-              <text value="Добавить камеру в таблицу"/>
+              <text value="Добавить камеру"/>
             </properties>
           </component>
         </children>
       </grid>
       <scrollpane id="a708b" binding="scrollPaneForTable">
         <constraints>
-          <grid row="2" column="0" row-span="1" col-span="4" vsize-policy="7" hsize-policy="7" anchor="1" fill="1" indent="0" use-parent-layout="false">
+          <grid row="2" column="0" row-span="1" col-span="9" vsize-policy="7" hsize-policy="7" anchor="1" fill="1" indent="0" use-parent-layout="false">
             <minimum-size width="800" height="-1"/>
           </grid>
         </constraints>
@@ -365,6 +375,116 @@
           </component>
         </children>
       </scrollpane>
+      <grid id="ae4ad" binding="panelForOutputResultsFunctions" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="10" left="10" bottom="10" right="10"/>
+        <constraints>
+          <grid row="5" column="0" row-span="1" col-span="9" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-13559790"/>
+          <font name="JetBrains Mono" size="12" style="1"/>
+          <foreground color="-609390"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="44c03" class="javax.swing.JLabel" binding="labelForTitleResultsBlock">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="JetBrains Mono" size="12" style="1"/>
+              <foreground color="-609390"/>
+              <text value="Вывод результатов вычислений"/>
+            </properties>
+          </component>
+          <hspacer id="dc8cd">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </hspacer>
+          <grid id="4e6b3" binding="lightBackgroundPanelForOutputResultsBlock" layout-manager="GridLayoutManager" row-count="3" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="10" left="10" bottom="10" right="10"/>
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-3419422"/>
+              <foreground color="-3419422"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="da710" class="javax.swing.JLabel" binding="labelCalculateMostNotWearCamera">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font name="JetBrains Mono" size="12" style="1"/>
+                  <foreground color="-13559790"/>
+                  <text value="Cамая неизношенная камера"/>
+                  <toolTipText value="покажет камеру с минимальным пробегом"/>
+                </properties>
+              </component>
+              <component id="89e5f" class="javax.swing.JLabel" binding="labelForOutputFindedNotMostWearedCamera">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font name="JetBrains Mono" size="12" style="1"/>
+                  <foreground color="-12640490"/>
+                  <text value="Label"/>
+                </properties>
+              </component>
+              <component id="b57c1" class="javax.swing.JLabel" binding="labelForTitleMostProfitableCamera">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font name="JetBrains Mono" size="12" style="1"/>
+                  <foreground color="-13559790"/>
+                  <text value="Самая выгодная камера (цена)"/>
+                  <toolTipText value="покажет камеру с наименьшей стоимостью"/>
+                </properties>
+              </component>
+              <component id="a67cd" class="javax.swing.JLabel" binding="labelForOutputFindedMostProfitableCamera">
+                <constraints>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font name="JetBrains Mono" size="12" style="1"/>
+                  <foreground color="-12640490"/>
+                  <text value="Label"/>
+                </properties>
+              </component>
+              <component id="d9e46" class="javax.swing.JLabel" binding="labelForMostProfitableCameraFromMileagePriceAndLens">
+                <constraints>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font name="JetBrains Mono" size="12" style="1"/>
+                  <foreground color="-13559790"/>
+                  <text value="Самая выгодная камера (объектив/цена/пробег)"/>
+                  <toolTipText value="покажет самую выгодную камеру по пробегу, цене и наличию объектива (если объектива нет, то только по пробегу и цене)"/>
+                </properties>
+              </component>
+              <component id="26738" class="javax.swing.JLabel" binding="labelForOutputMostProfitableCameraFromMileagePriceAndLens">
+                <constraints>
+                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font name="JetBrains Mono" size="12" style="1"/>
+                  <foreground color="-12640490"/>
+                  <text value="Label"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+        </children>
+      </grid>
+      <vspacer id="d94b8">
+        <constraints>
+          <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
     </children>
   </grid>
 </form>
