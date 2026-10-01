@@ -75,4 +75,9 @@ public class outputFunctions {
         String outString = getTime() + " [DEBUG] " + message;
         System.out.println(ansi().fgBrightBlack().a(outString).reset());
     }
+
+    public static void spacerPoints(){
+        String spacerString = "    " + ".".repeat(80);
+        System.out.println(ansi().fgBrightBlack().a(spacerString).reset());
+    }
 }
