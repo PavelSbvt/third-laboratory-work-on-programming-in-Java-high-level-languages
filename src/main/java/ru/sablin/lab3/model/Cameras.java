@@ -1,5 +1,7 @@
 package ru.sablin.lab3.model;
 
+import ru.sablin.lab3.util.outputFunctions;
+
 
 /**
  * Класс для создания объекта камеры, информация о котором будет помещаться в таблицу
