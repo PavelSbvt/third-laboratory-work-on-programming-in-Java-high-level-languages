@@ -25,7 +25,7 @@ public class Main {
 
         frame.setContentPane(scroll);
 
-        frame.setSize(900, 700);
+        frame.setSize(1800, 900);
         frame.setMinimumSize(new java.awt.Dimension(500, 400));
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
@@ -38,10 +38,7 @@ public class Main {
 
         CamerasManager manager = new CamerasManager();
 
-        manager.createCamerasNikonInQuantity(11, "D600", "Nikon", 24.1);
-
         Gui gui = createWindowUI();
-        gui.addCameras(manager);
 
         manager.showCamerasArray(manager.camerasNikonD600);
     }
