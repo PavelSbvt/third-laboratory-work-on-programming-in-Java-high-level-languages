@@ -103,6 +103,32 @@ public class CamerasManager{
                 " марка - %s", quantity, model, brand));
     }
 
+    public void createCamera(String model, String brand, double megapixels,
+                                int price, int year, String equipment,
+                                String completeLens, int serialNumber,
+                                int mileageOfCamera) {
+        Cameras camera = new Cameras(model, brand, megapixels, price, year,
+                equipment, completeLens, serialNumber, mileageOfCamera);
+
+        camerasNikonD600.add(camera);
+
+        outputFunctions.simpleLog(String.format(
+                "Создана новая камера:\n    " +
+                        "----------------------------\n    " +
+                        "модель:.................%s\n    " +
+                        "производитель:..........%s\n    " +
+                        "кол-во мегапикселей:....%.1f\n    " +
+                        "стоимость:..............%d рублей\n    " +
+                        "год выпуска:............%d\n    " +
+                        "комплектация:...........%s\n    " +
+                        "объектив:...............%s\n    " +
+                        "серийный номер:.........%d\n    " +
+                        "пробег затвора:.........%d\n    " +
+                        "----------------------------",
+                brand, model, megapixels, price, year, equipment,
+                completeLens, serialNumber, mileageOfCamera));
+    }
+
     public List<Cameras> getCameras() {
         return camerasNikonD600;
     }
