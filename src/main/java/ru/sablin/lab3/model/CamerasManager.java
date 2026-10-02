@@ -51,18 +51,31 @@ public class CamerasManager{
 
         String equipment =massiveRandomEquipment[rnd.nextInt(massiveRandomEquipment.length)];
 
-        int price = rnd.nextInt(22000) + 48000;
+        int price;
 
         int year = rnd.nextInt(6) + 2012;
 
         String completeLens;
         if (equipment.equals("kit")){
-            String[] masLens = {"Nikkor 50mm 1.8", "Nikon 24-120"};
+            price = rnd.nextInt(22000) + 80000;
+            String[] masLens = {
+                    "AF-S NIKKOR 24-85mm f/3.5-4.5G ED VR",
+                    "AF-S NIKKOR 24-120mm f/4G ED VR", "AF-S NIKKOR 24-70mm f/2.8G ED",
+                    "AF-S NIKKOR 24-70mm f/2.8E ED VR", "AF-S NIKKOR 24-50mm f/4-5.6"};
             completeLens = masLens[rnd.nextInt(masLens.length)];
         } else if (equipment.equals("set")) {
-            String[] masLens = {"Tamron SP macro 2.8 70-200", "Nikon 70-200 2.8"};
+            price = rnd.nextInt(22000) + 100000;
+            String[] masLens = {
+                    "Tamron SP 70-200mm f/2.8 Di VC USD G2",
+                    "Sigma 28mm f/1.4 DG HSM Art",
+                    "Nikon AF-S 50mm f/1.4G", "Nikon AF-S 85mm f/1.4G",
+                    "Nikon AF-S Micro 105mm f/2.8G IF-ED VR",
+                    "Sigma 85mm f/1.4 DG HSM Art", "Tamron SP 70-200mm f/2.8 a001 Macro",
+                    "Nikon AF-S 200-500mm f/5.6E ED VR",
+                    "Tamron SP AF 150-600mm f/5-6.3 Di VC USD Nikon F (A022)"};
             completeLens = masLens[rnd.nextInt(masLens.length)];
         } else {
+            price = rnd.nextInt(22000) + 48000;
             completeLens = "None";
         }
 
