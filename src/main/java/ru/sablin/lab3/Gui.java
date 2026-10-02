@@ -85,15 +85,13 @@ public class Gui {
         buttonForCreateTableByInputCountStrings.addActionListener(
                 e -> createTableByCountStrings(manager));
 
-        this.setTextForLabelNotMostWearCamera(manager);
-        this.setTextForLabelMostProfitableCamera(manager);
-        this.setTextForLabelWithMostProfitableCameraFromPriceMileageAndLens(manager);
+        this.updateStatistic();
 
         outputFunctions.debugLog("Конструктор класса GUI");
     }
 
     public void setTextForLabelWithMostProfitableCameraFromPriceMileageAndLens(
-            CamerasManager manager){
+            CamerasManager manager, Object[][] dataMas){
         List<Cameras> cameras = manager.getCameras();
 
         if (cameras == null || cameras.isEmpty()) {
@@ -132,7 +130,7 @@ public class Gui {
                 "(пробег, цена, объектив): \n" + resultText);
     }
 
-    public void setTextForLabelMostProfitableCamera(CamerasManager manager){
+    public void setTextForLabelMostProfitableCamera(CamerasManager manager, Object[][] dataMas){
         List<Cameras> cameras = manager.getCameras();
         if (cameras == null || cameras.isEmpty()) {
             labelForOutputFindedMostProfitableCamera.setText("Список камер пуст");
@@ -165,7 +163,8 @@ public class Gui {
                 "Найдена самая выгодная по цене камера: \n" + resultText);
     }
 
-    public void setTextForLabelNotMostWearCamera(CamerasManager manager) {
+    public void setTextForLabelNotMostWearCamera(CamerasManager manager, Object[][] dataMas) {
+
         List<Cameras> cameras = manager.getCameras();
 
         if (cameras == null || cameras.isEmpty()) {
@@ -223,9 +222,20 @@ public class Gui {
         }
         this.addCameras(manager);
 
-        this.setTextForLabelNotMostWearCamera(manager);
-        this.setTextForLabelMostProfitableCamera(manager);
-        this.setTextForLabelWithMostProfitableCameraFromPriceMileageAndLens(manager);
+        this.updateStatistic();
+    }
+
+    public void updateStatistic(){
+        Object[][] tableData = this.getDataFromTable();
+
+        CamerasManager manager = new CamerasManager();
+
+        this.setTextForLabelNotMostWearCamera(
+                manager, tableData);
+        this.setTextForLabelMostProfitableCamera(
+                manager, tableData);
+        this.setTextForLabelWithMostProfitableCameraFromPriceMileageAndLens(
+                manager,tableData);
     }
 
     public void onAddCameraClicked() {
@@ -298,15 +308,24 @@ public class Gui {
 
         CamerasManager manager = new CamerasManager();
 
-        this.setTextForLabelNotMostWearCamera(manager);
-        this.setTextForLabelMostProfitableCamera(manager);
-        this.setTextForLabelWithMostProfitableCameraFromPriceMileageAndLens(manager);
+        this.updateStatistic();
     }
 
     public void addCameras(CamerasManager manager) {
         for (Cameras camera : manager.getCameras()) {
             addCamera(camera);
         }
+    }
+
+    public Object[][] getDataFromTable(){
+        Object[][] data = new Object[tableModel.getRowCount()][tableModel.getColumnCount()];
+        for (int i = 0; i < tableModel.getRowCount(); i++) {
+            for (int j = 0; j < tableModel.getColumnCount(); j++) {
+                data[i][j] = tableModel.getValueAt(i, j);
+            }
+        }
+
+        return data;
     }
 
     public JPanel getContentPane() {
