@@ -12,7 +12,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 
 public class Gui {
     private DefaultTableModel tableModel;
-    private JTable table1;
+    private JTable tableForCameras;
     private JPanel contentPane;
     private JLabel titleForInputCountStringsUserWants;
     private JTextField inputCountStrings;
@@ -51,9 +51,11 @@ public class Gui {
     private JLabel labelForOutputFindedMostProfitableCamera;
     private JLabel labelForMostProfitableCameraFromMileagePriceAndLens;
     private JLabel labelForOutputMostProfitableCameraFromMileagePriceAndLens;
+    private JPanel panelForWindowTitle;
 
     private static final String[] COLUMNS = {
-            "Модель", "Бренд", "Мп", "Цена", "Год", "Комплектация", "Объектив", "Серийный номер", "Пробег"
+            "Модель", "Бренд", "Мп", "Цена", "Год",
+            "Комплектация", "Объектив", "Серийный номер", "Пробег"
     };
 
     public Gui() {
@@ -66,19 +68,22 @@ public class Gui {
 
         CamerasManager manager = new CamerasManager();
 
-        table1.setModel(tableModel);
+        tableForCameras.setModel(tableModel);
 
-        table1.setRowHeight(30);
+        tableForCameras.setRowHeight(30);
 
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(JLabel.CENTER);
-        table1.setDefaultRenderer(Object.class, centerRenderer);
+        tableForCameras.setDefaultRenderer(Object.class, centerRenderer);
 
-        inputCountStrings.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 3));
-        lightPanelIntoPanelForAddCamera.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        inputCountStrings.setBorder(BorderFactory.createEmptyBorder(
+                3, 3, 3, 3));
+        lightPanelIntoPanelForAddCamera.setBorder(BorderFactory.createEmptyBorder(
+                10, 10, 10, 10));
 
         buttonForAddNewCameraToTable.addActionListener(e -> onAddCameraClicked());
-        buttonForCreateTableByInputCountStrings.addActionListener(e -> createTableByCountStrings(manager));
+        buttonForCreateTableByInputCountStrings.addActionListener(
+                e -> createTableByCountStrings(manager));
 
         this.setTextForLabelNotMostWearCamera(manager);
         this.setTextForLabelMostProfitableCamera(manager);
@@ -87,24 +92,33 @@ public class Gui {
         outputFunctions.debugLog("Конструктор класса GUI");
     }
 
-    public void setTextForLabelWithMostProfitableCameraFromPriceMileageAndLens(CamerasManager manager){
+    public void setTextForLabelWithMostProfitableCameraFromPriceMileageAndLens(
+            CamerasManager manager){
         List<Cameras> cameras = manager.getCameras();
 
         if (cameras == null || cameras.isEmpty()) {
-            labelForOutputMostProfitableCameraFromMileagePriceAndLens.setText("Список камер пуст");
-            outputFunctions.warningLog("Список камер пуст, невозможно найти самую выгодную камеру");
+            labelForOutputMostProfitableCameraFromMileagePriceAndLens.setText(
+                    "Список камер пуст");
+            outputFunctions.warningLog(
+                    "Список камер пуст, невозможно найти самую выгодную камеру");
             return;
         }
 
         Cameras requiredCamera = cameras.get(0);
         for (int i = 1; i < cameras.size(); i++) {
             Cameras currentCamera = cameras.get(i);
-            if ((currentCamera.getPrice() < requiredCamera.getPrice()) && (currentCamera.getMileageOfCamera() < requiredCamera.getMileageOfCamera()) && (currentCamera.getEquipment().equals("kit") || currentCamera.getEquipment().equals("set"))) {
+            if ((currentCamera.getPrice() < requiredCamera.getPrice())
+                    && (currentCamera.getMileageOfCamera() <
+                    requiredCamera.getMileageOfCamera())
+                    && (currentCamera.getEquipment().equals("kit")
+                    || currentCamera.getEquipment().equals("set"))) {
                 requiredCamera = currentCamera;
             }
         }
 
-        String resultText = String.format("%s (%s), серийный номер: %d, пробег %d, цена %d, комплектация %s, объектив %s",
+        String resultText = String.format(
+                "%s (%s), серийный номер: %d, пробег %d, цена %d, " +
+                "комплектация %s, объектив %s",
                 requiredCamera.getModel(),
                 requiredCamera.getBrand(),
                 requiredCamera.getSerialNumber(),
@@ -114,14 +128,16 @@ public class Gui {
                 requiredCamera.getCompleteLens());
 
         labelForOutputMostProfitableCameraFromMileagePriceAndLens.setText(resultText);
-        outputFunctions.simpleLog("Найдена самая выгодная камера (пробег, цена, объектив): " + resultText);
+        outputFunctions.simpleLog("Найдена самая выгодная камера " +
+                "(пробег, цена, объектив): \n" + resultText);
     }
 
     public void setTextForLabelMostProfitableCamera(CamerasManager manager){
         List<Cameras> cameras = manager.getCameras();
         if (cameras == null || cameras.isEmpty()) {
             labelForOutputFindedMostProfitableCamera.setText("Список камер пуст");
-            outputFunctions.warningLog("Список камер пуст, невозможно найти самую выгодную по цене камеру");
+            outputFunctions.warningLog(
+                    "Список камер пуст, невозможно найти самую выгодную по цене камеру");
             return;
         }
 
@@ -133,7 +149,9 @@ public class Gui {
             }
         }
 
-        String resultText = String.format("%s (%s), серийный номер: %d, пробег %d, цена %d, комплектация %s, объектив %s",
+        String resultText = String.format(
+                "%s (%s), серийный номер: %d, пробег %d, цена %d, " +
+                "комплектация %s, объектив %s",
                 requiredCamera.getModel(),
                 requiredCamera.getBrand(),
                 requiredCamera.getSerialNumber(),
@@ -143,7 +161,8 @@ public class Gui {
                 requiredCamera.getCompleteLens());
 
         labelForOutputFindedMostProfitableCamera.setText(resultText);
-        outputFunctions.simpleLog("Найдена самая выгодная по цене камера: " + resultText);
+        outputFunctions.simpleLog(
+                "Найдена самая выгодная по цене камера: \n" + resultText);
     }
 
     public void setTextForLabelNotMostWearCamera(CamerasManager manager) {
@@ -151,7 +170,8 @@ public class Gui {
 
         if (cameras == null || cameras.isEmpty()) {
             labelForOutputFindedNotMostWearedCamera.setText("Список камер пуст");
-            outputFunctions.warningLog("Список камер пуст, невозможно найти минимальный пробег");
+            outputFunctions.warningLog(
+                    "Список камер пуст, невозможно найти минимальный пробег");
             return;
         }
 
@@ -159,12 +179,15 @@ public class Gui {
 
         for (int i = 1; i < cameras.size(); i++) {
             Cameras currentCamera = cameras.get(i);
-            if (currentCamera.getMileageOfCamera() < cameraWithMinMileage.getMileageOfCamera()) {
-                cameraWithMinMileage = currentCamera;
+            if (currentCamera.getMileageOfCamera() <
+                cameraWithMinMileage.getMileageOfCamera()) {
+                    cameraWithMinMileage = currentCamera;
             }
         }
 
-        String resultText = String.format("%s (%s), серийный номер: %d, пробег %d, цена %d, комплектация %s, объектив %s",
+        String resultText = String.format(
+                "%s (%s), серийный номер: %d, пробег %d, цена %d," +
+                " комплектация %s, объектив %s",
                 cameraWithMinMileage.getModel(),
                 cameraWithMinMileage.getBrand(),
                 cameraWithMinMileage.getSerialNumber(),
@@ -174,7 +197,8 @@ public class Gui {
                 cameraWithMinMileage.getCompleteLens());
 
         labelForOutputFindedNotMostWearedCamera.setText(resultText);
-        outputFunctions.simpleLog("Найдена камера с минимальным пробегом: " + resultText);
+        outputFunctions.simpleLog(
+                "Найдена камера с минимальным пробегом: \n" + resultText);
     }
 
 
@@ -183,16 +207,19 @@ public class Gui {
             int camerasQuantity = Integer.parseInt(inputCountStrings.getText().trim());
 
             if (camerasQuantity < 10){
-                manager.createCamerasNikonInQuantity(10, "D600", "Nikon", 24.1);
+                manager.createCamerasNikonInQuantity(
+                        10, "D600", "Nikon", 24.1);
             } else {
-                manager.createCamerasNikonInQuantity(camerasQuantity, "D600", "Nikon", 24.1);
+                manager.createCamerasNikonInQuantity(
+                        camerasQuantity, "D600", "Nikon", 24.1);
             }
         } catch (NumberFormatException ex){
             outputFunctions.warningLog("Некорректный ввод: " + ex.getMessage());
             JOptionPane.showMessageDialog(contentPane,
                     "Проверьте поле ввода количества строк талицы",
                     "Ошибка ввода", JOptionPane.ERROR_MESSAGE);
-            manager.createCamerasNikonInQuantity(10, "D600", "Nikon", 24.1);
+            manager.createCamerasNikonInQuantity(
+                    10, "D600", "Nikon", 24.1);
         }
         this.addCameras(manager);
 
@@ -203,15 +230,20 @@ public class Gui {
 
     public void onAddCameraClicked() {
         try {
-            String model     = textFieldInputCameraModel.getText().trim();
-            String brand     = textFieldForInputCameraBrand.getText().trim();
-            double megapixels = Double.parseDouble(textFieldForInputCountMegapixels.getText().trim());
-            int price        = Integer.parseInt(textFieldForInputCameraPrice.getText().trim());
-            int year         = Integer.parseInt(textFieldForInputCameraYearBuilding.getText().trim());
+            String model = textFieldInputCameraModel.getText().trim();
+            String brand = textFieldForInputCameraBrand.getText().trim();
+            double megapixels = Double.parseDouble(
+                    textFieldForInputCountMegapixels.getText().trim());
+            int price = Integer.parseInt(
+                    textFieldForInputCameraPrice.getText().trim());
+            int year = Integer.parseInt(
+                    textFieldForInputCameraYearBuilding.getText().trim());
             String equipment = textFieldForInputCameraEquipment.getText().trim();
-            String lens      = textFieldForInputCameraLens.getText().trim();
-            int serial       = Integer.parseInt(textFieldForInputCameraSerialNumber.getText().trim());
-            int mileage      = Integer.parseInt(textFieldForInputCameraMileage.getText().trim());
+            String lens = textFieldForInputCameraLens.getText().trim();
+            int serial = Integer.parseInt(
+                    textFieldForInputCameraSerialNumber.getText().trim());
+            int mileage = Integer.parseInt(
+                    textFieldForInputCameraMileage.getText().trim());
 
             if (model.isEmpty() || brand.isEmpty()) {
                 outputFunctions.warningLog("Модель и бренд не могут быть пустыми");
@@ -226,7 +258,8 @@ public class Gui {
 
             addCamera(camera);
 
-            outputFunctions.simpleLog("Камера добавлена вручную: " + brand + " " + model);
+            outputFunctions.simpleLog(
+                    "Камера добавлена вручную: " + brand + " " + model);
 
             clearInputFields();
 
