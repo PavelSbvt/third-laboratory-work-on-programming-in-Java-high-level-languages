@@ -9,7 +9,11 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
 
-
+/**
+ * Класс, автоматически созданный Swing Designer, для работы с
+ * пользовательским интерфейсом и выводом данных на таблицу,
+ * сохранения данных из таблицы в двумерный массив
+ */
 public class Gui {
     private DefaultTableModel tableModel;
     private JTable tableForCameras;
@@ -58,6 +62,10 @@ public class Gui {
             "Комплектация", "Объектив", "Серийный номер", "Пробег"
     };
 
+
+    /**
+     * Конструктор класса
+     */
     public Gui() {
         tableModel = new DefaultTableModel(COLUMNS, 0) {
             @Override
@@ -90,6 +98,14 @@ public class Gui {
         outputFunctions.debugLog("Конструктор класса GUI");
     }
 
+
+    /**
+     * Функция для поиска в таблице камеры с самой низкой ценой и индикации
+     * найденной камеры в отдельный лебл блока результатов вычислительных функций
+     *
+     * @param manager - принимает объект класса CamerasManager
+     * @param dataMas - принимает двумерный массив с данными таблицы
+     */
     public void setTextForLabelWithMostProfitableCameraFromPriceMileageAndLens(
             CamerasManager manager, Object[][] dataMas){
         List<Cameras> cameras = manager.getCameras();
@@ -130,6 +146,15 @@ public class Gui {
                 "(пробег, цена, объектив): \n" + resultText);
     }
 
+
+    /**
+     * Функция для нахождения самой "выгодной" камеры из списка (проверка на минимально
+     * возможные пробег, цену и наличие объектива в комплекте) и показ найденного
+     * экземпляра в лейбле в блоке результатов работы функций-обработчиков данных таблицы
+     *
+     * @param manager - принимает объект класса CamerasManager
+     * @param dataMas - принимает двумерный массив с данными из таблицы
+     */
     public void setTextForLabelMostProfitableCamera(CamerasManager manager, Object[][] dataMas){
         List<Cameras> cameras = manager.getCameras();
         if (cameras == null || cameras.isEmpty()) {
@@ -163,6 +188,14 @@ public class Gui {
                 "Найдена самая выгодная по цене камера: \n" + resultText);
     }
 
+
+    /**
+     * Функция для нахождения в таблице камеры с минимальным пробегом и вывод
+     * информации о ней в лейбл в блоке результатов функций для работы с данными таблицы
+     *
+     * @param manager - принимает объект класса CamerasManager
+     * @param dataMas - принимает двумерный массив с данными таблицы
+     */
     public void setTextForLabelNotMostWearCamera(CamerasManager manager, Object[][] dataMas) {
 
         List<Cameras> cameras = manager.getCameras();
@@ -201,6 +234,12 @@ public class Gui {
     }
 
 
+    /**
+     * Функция для создания и доавления в таблицу строк, число которых указывает сам
+     * пользователь в отдельном блоке, с случайными полями (часть - случайно заполненные)
+     *
+     * @param manager - принимает объект класса CamerasManager
+     */
     public void createTableByCountStrings(CamerasManager manager){
         try{
             int camerasQuantity = Integer.parseInt(inputCountStrings.getText().trim());
@@ -225,6 +264,12 @@ public class Gui {
         this.updateStatistic();
     }
 
+
+    /**
+     * Функция для обновления данных статистики, отображыющейся в блоке результатов,
+     * которую подсчитывают вычислительные функции. Вызывает эти самые вычислительные
+     * функции для нового расчёта. Также обновляет таблицу с данными таблицы.
+     */
     public void updateStatistic(){
         Object[][] tableData = this.getDataFromTable();
 
@@ -238,6 +283,12 @@ public class Gui {
                 manager,tableData);
     }
 
+
+    /**
+     * Функция, которая вызывается при нажатии кнопки добавления в таблицу новой строки
+     * (её создаёт сам пользователь, заполняя поля в блоке создания строки).
+     * Собирает данные из полей ввода и добавляет данные в таблицу.
+     */
     public void onAddCameraClicked() {
         try {
             String model = textFieldInputCameraModel.getText().trim();
@@ -281,6 +332,10 @@ public class Gui {
         }
     }
 
+
+    /**
+     * Функция очистки полей ввода для создания камеры.
+     */
     public void clearInputFields() {
         textFieldInputCameraModel.setText("");
         textFieldForInputCameraBrand.setText("");
@@ -293,6 +348,10 @@ public class Gui {
         textFieldForInputCameraMileage.setText("");
     }
 
+
+    /**
+     * Функция для добавления камеры в таблицу.
+      */
     public void addCamera(Cameras camera) {
         tableModel.addRow(new Object[]{
                 camera.getModel(),
@@ -306,19 +365,29 @@ public class Gui {
                 camera.getMileageOfCamera()
         });
 
-        CamerasManager manager = new CamerasManager();
-
         this.updateStatistic();
     }
 
+
+    /**
+     * Функция для добавления в таблицу всех камер, которые есть в листе камер
+     * из класса CamerasManager
+     * @param manager - принимает объект класса CamerasManager
+     */
     public void addCameras(CamerasManager manager) {
         for (Cameras camera : manager.getCameras()) {
             addCamera(camera);
         }
     }
 
+
+    /**
+     * Функция для получения данных таблицы.
+     * @return Object[][] - возвращает двумерный массив с данными из ячеек таблицы
+     */
     public Object[][] getDataFromTable(){
-        Object[][] data = new Object[tableModel.getRowCount()][tableModel.getColumnCount()];
+        Object[][] data = new Object[tableModel.getRowCount()][
+                tableModel.getColumnCount()];
         for (int i = 0; i < tableModel.getRowCount(); i++) {
             for (int j = 0; j < tableModel.getColumnCount(); j++) {
                 data[i][j] = tableModel.getValueAt(i, j);
@@ -328,6 +397,12 @@ public class Gui {
         return data;
     }
 
+
+    /**
+     * Функция для получения панели с Gui-элементами
+     * @return возвражает объект JPanel, который содержит все виджеты окна,
+     * созданные в Swing Designer
+     */
     public JPanel getContentPane() {
         return contentPane;
     }
