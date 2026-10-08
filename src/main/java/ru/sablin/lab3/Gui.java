@@ -56,6 +56,7 @@ public class Gui {
     private JLabel labelForMostProfitableCameraFromMileagePriceAndLens;
     private JLabel labelForOutputMostProfitableCameraFromMileagePriceAndLens;
     private JPanel panelForWindowTitle;
+    private JButton buttonUpdateStatistic;
 
     private static final String[] COLUMNS = {
             "Модель", "Бренд", "Мп", "Цена", "Год",
@@ -92,6 +93,7 @@ public class Gui {
         buttonForAddNewCameraToTable.addActionListener(e -> onAddCameraClicked());
         buttonForCreateTableByInputCountStrings.addActionListener(
                 e -> createTableByCountStrings(manager));
+        buttonUpdateStatistic.addActionListener(event -> updateStatistic());
 
         this.updateStatistic();
 
@@ -193,40 +195,42 @@ public class Gui {
      * Функция для нахождения в таблице камеры с минимальным пробегом и вывод
      * информации о ней в лейбл в блоке результатов функций для работы с данными таблицы
      *
-     * @param manager - принимает объект класса CamerasManager
      * @param dataMas - принимает двумерный массив с данными таблицы
      */
-    public void setTextForLabelNotMostWearCamera(CamerasManager manager, Object[][] dataMas) {
+    public void setTextForLabelNotMostWearCamera(Object[][] dataMas) {
 
-        List<Cameras> cameras = manager.getCameras();
+        int rowCount = tableModel.getRowCount();
 
-        if (cameras == null || cameras.isEmpty()) {
+        if (rowCount == 0) {
             labelForOutputFindedNotMostWearedCamera.setText("Список камер пуст");
             outputFunctions.warningLog(
                     "Список камер пуст, невозможно найти минимальный пробег");
             return;
         }
 
-        Cameras cameraWithMinMileage = cameras.get(0);
+        int cameraWithMinMileage = Integer.parseInt(dataMas[0][8].toString().trim());
 
-        for (int i = 1; i < cameras.size(); i++) {
-            Cameras currentCamera = cameras.get(i);
-            if (currentCamera.getMileageOfCamera() <
-                cameraWithMinMileage.getMileageOfCamera()) {
-                    cameraWithMinMileage = currentCamera;
+        int indexCameraWithMinMileage = 0;
+
+        for (int i = 1; i < tableModel.getRowCount(); i++) {
+            int currentCameraMileage = Integer.parseInt(dataMas[i][8].toString().trim());
+            if (currentCameraMileage <
+                cameraWithMinMileage) {
+                    cameraWithMinMileage = currentCameraMileage;
+                    indexCameraWithMinMileage = i;
             }
         }
 
         String resultText = String.format(
                 "%s (%s), серийный номер: %d, пробег %d, цена %d," +
                 " комплектация %s, объектив %s",
-                cameraWithMinMileage.getModel(),
-                cameraWithMinMileage.getBrand(),
-                cameraWithMinMileage.getSerialNumber(),
-                cameraWithMinMileage.getMileageOfCamera(),
-                cameraWithMinMileage.getPrice(),
-                cameraWithMinMileage.getEquipment(),
-                cameraWithMinMileage.getCompleteLens());
+                (String) dataMas[indexCameraWithMinMileage][0],
+                (String) dataMas[indexCameraWithMinMileage][1],
+                (Integer) dataMas[indexCameraWithMinMileage][7],
+                Integer.parseInt(dataMas[0][8].toString().trim()),
+                (Integer) dataMas[indexCameraWithMinMileage][3],
+                (String) dataMas[indexCameraWithMinMileage][5],
+                (String) dataMas[indexCameraWithMinMileage][6]);
 
         labelForOutputFindedNotMostWearedCamera.setText(resultText);
         outputFunctions.simpleLog(
@@ -276,7 +280,7 @@ public class Gui {
         CamerasManager manager = new CamerasManager();
 
         this.setTextForLabelNotMostWearCamera(
-                manager, tableData);
+                tableData);
         this.setTextForLabelMostProfitableCamera(
                 manager, tableData);
         this.setTextForLabelWithMostProfitableCameraFromPriceMileageAndLens(
