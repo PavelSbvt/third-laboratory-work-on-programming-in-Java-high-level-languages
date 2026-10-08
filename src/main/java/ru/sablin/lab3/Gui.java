@@ -156,7 +156,7 @@ public class Gui {
 
         labelForOutputMostProfitableCameraFromMileagePriceAndLens.setText(resultText);
         outputFunctions.simpleLog("Найдена самая выгодная камера " +
-                "(пробег, цена, объектив): \n" + resultText);
+                "(пробег, цена, объектив): \n    " + resultText);
     }
 
 
@@ -201,7 +201,7 @@ public class Gui {
 
         labelForOutputFindedMostProfitableCamera.setText(resultText);
         outputFunctions.simpleLog(
-                "Найдена самая выгодная по цене камера: \n" + resultText);
+                "Найдена самая выгодная по цене камера: \n    " + resultText);
     }
 
 
@@ -246,7 +246,7 @@ public class Gui {
 
         labelForOutputFindedNotMostWearedCamera.setText(resultText);
         outputFunctions.simpleLog(
-                "Найдена камера с минимальным пробегом: \n" + resultText);
+                "Найдена камера с минимальным пробегом: \n    " + resultText);
     }
 
     /**
@@ -324,6 +324,9 @@ public class Gui {
      * функции для нового расчёта. Также обновляет таблицу с данными таблицы.
      */
     public void updateStatistic(){
+
+        outputFunctions.debugLog("Обновление статистики");
+
         Object[][] tableData = this.getDataFromTable();
 
         this.setTextForLabelNotMostWearCamera(
