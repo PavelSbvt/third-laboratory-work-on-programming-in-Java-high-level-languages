@@ -105,14 +105,12 @@ public class Gui {
      * Функция для поиска в таблице камеры с самой низкой ценой и индикации
      * найденной камеры в отдельный лебл блока результатов вычислительных функций
      *
-     * @param manager - принимает объект класса CamerasManager
      * @param dataMas - принимает двумерный массив с данными таблицы
      */
     public void setTextForLabelWithMostProfitableCameraFromPriceMileageAndLens(
-            CamerasManager manager, Object[][] dataMas){
-        List<Cameras> cameras = manager.getCameras();
+            Object[][] dataMas){
 
-        if (cameras == null || cameras.isEmpty()) {
+        if (tableModel.getRowCount() == 0) {
             labelForOutputMostProfitableCameraFromMileagePriceAndLens.setText(
                     "Список камер пуст");
             outputFunctions.warningLog(
@@ -120,28 +118,35 @@ public class Gui {
             return;
         }
 
-        Cameras requiredCamera = cameras.get(0);
-        for (int i = 1; i < cameras.size(); i++) {
-            Cameras currentCamera = cameras.get(i);
-            if ((currentCamera.getPrice() < requiredCamera.getPrice())
-                    && (currentCamera.getMileageOfCamera() <
-                    requiredCamera.getMileageOfCamera())
-                    && (currentCamera.getEquipment().equals("kit")
-                    || currentCamera.getEquipment().equals("set"))) {
-                requiredCamera = currentCamera;
+        int requiredCameraPrice = Integer.parseInt(dataMas[0][3].toString().trim());
+        int requiredCameraMileage = Integer.parseInt(dataMas[0][8].toString().trim());
+        String requiredCameraEquipment = (String) dataMas[0][5];
+
+        int requiredCameraIndex = 0;
+
+        for (int i = 1; i < tableModel.getRowCount(); i++) {
+            int currentCameraPrice = Integer.parseInt(dataMas[i][3].toString().trim());
+            int currentCameraMileage = Integer.parseInt(dataMas[i][8].toString().trim());
+            String currentCameraEquipment = (String) dataMas[i][5];
+            if ((currentCameraMileage < requiredCameraMileage)
+                && (currentCameraPrice <
+                requiredCameraPrice)
+                && (currentCameraEquipment.equals("kit")
+                || currentCameraEquipment.equals("set"))) {
+                    requiredCameraIndex = i;
             }
         }
 
         String resultText = String.format(
                 "%s (%s), серийный номер: %d, пробег %d, цена %d, " +
                 "комплектация %s, объектив %s",
-                requiredCamera.getModel(),
-                requiredCamera.getBrand(),
-                requiredCamera.getSerialNumber(),
-                requiredCamera.getMileageOfCamera(),
-                requiredCamera.getPrice(),
-                requiredCamera.getEquipment(),
-                requiredCamera.getCompleteLens());
+                dataMas[requiredCameraIndex][0],
+                dataMas[requiredCameraIndex][1],
+                (Integer) dataMas[requiredCameraIndex][7],
+                (Integer) dataMas[requiredCameraIndex][8],
+                (Integer) dataMas[requiredCameraIndex][3],
+                dataMas[requiredCameraIndex][5],
+                dataMas[requiredCameraIndex][6]);
 
         labelForOutputMostProfitableCameraFromMileagePriceAndLens.setText(resultText);
         outputFunctions.simpleLog("Найдена самая выгодная камера " +
@@ -154,36 +159,39 @@ public class Gui {
      * возможные пробег, цену и наличие объектива в комплекте) и показ найденного
      * экземпляра в лейбле в блоке результатов работы функций-обработчиков данных таблицы
      *
-     * @param manager - принимает объект класса CamerasManager
      * @param dataMas - принимает двумерный массив с данными из таблицы
      */
-    public void setTextForLabelMostProfitableCamera(CamerasManager manager, Object[][] dataMas){
-        List<Cameras> cameras = manager.getCameras();
-        if (cameras == null || cameras.isEmpty()) {
+    public void setTextForLabelMostProfitableCamera(Object[][] dataMas){
+
+        if (tableModel.getRowCount() == 0) {
             labelForOutputFindedMostProfitableCamera.setText("Список камер пуст");
             outputFunctions.warningLog(
                     "Список камер пуст, невозможно найти самую выгодную по цене камеру");
             return;
         }
 
-        Cameras requiredCamera = cameras.get(0);
-        for (int i = 1; i < cameras.size(); i++) {
-            Cameras currentCamera = cameras.get(i);
-            if (currentCamera.getPrice() < requiredCamera.getPrice()) {
-                requiredCamera = currentCamera;
+        int requiredCameraPrice = Integer.parseInt(dataMas[0][3].toString().trim());
+
+        int requiredCameraIndex = 0;
+
+        for (int i = 1; i < tableModel.getRowCount(); i++) {
+            int currentCameraPrice = Integer.parseInt(dataMas[i][3].toString().trim());
+            if (currentCameraPrice < requiredCameraPrice) {
+                requiredCameraPrice = currentCameraPrice;
+                requiredCameraIndex = i;
             }
         }
 
         String resultText = String.format(
                 "%s (%s), серийный номер: %d, пробег %d, цена %d, " +
                 "комплектация %s, объектив %s",
-                requiredCamera.getModel(),
-                requiredCamera.getBrand(),
-                requiredCamera.getSerialNumber(),
-                requiredCamera.getMileageOfCamera(),
-                requiredCamera.getPrice(),
-                requiredCamera.getEquipment(),
-                requiredCamera.getCompleteLens());
+                dataMas[requiredCameraIndex][0],
+                dataMas[requiredCameraIndex][1],
+                (Integer) dataMas[requiredCameraIndex][7],
+                (Integer) dataMas[requiredCameraIndex][8],
+                (Integer) dataMas[requiredCameraIndex][3],
+                dataMas[requiredCameraIndex][5],
+                dataMas[requiredCameraIndex][6]);
 
         labelForOutputFindedMostProfitableCamera.setText(resultText);
         outputFunctions.simpleLog(
@@ -199,9 +207,7 @@ public class Gui {
      */
     public void setTextForLabelNotMostWearCamera(Object[][] dataMas) {
 
-        int rowCount = tableModel.getRowCount();
-
-        if (rowCount == 0) {
+        if (tableModel.getRowCount() == 0) {
             labelForOutputFindedNotMostWearedCamera.setText("Список камер пуст");
             outputFunctions.warningLog(
                     "Список камер пуст, невозможно найти минимальный пробег");
@@ -277,14 +283,12 @@ public class Gui {
     public void updateStatistic(){
         Object[][] tableData = this.getDataFromTable();
 
-        CamerasManager manager = new CamerasManager();
-
         this.setTextForLabelNotMostWearCamera(
                 tableData);
         this.setTextForLabelMostProfitableCamera(
-                manager, tableData);
+                tableData);
         this.setTextForLabelWithMostProfitableCameraFromPriceMileageAndLens(
-                manager,tableData);
+                tableData);
     }
 
 
