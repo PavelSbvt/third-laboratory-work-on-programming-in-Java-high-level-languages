@@ -8,6 +8,16 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
 
+import java.io.FileOutputStream;
+
+import com.itextpdf.text.Document;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+
 
 /**
  * Класс, автоматически созданный Swing Designer, для работы с
@@ -60,6 +70,7 @@ public class Gui {
     private JLabel averagePrice;
     private JLabel labelForoutputAvaragePrice;
     private JPanel panelForGroupUpeerWidgets;
+    private JButton buttonForSaveTablesDataToPDF;
 
     private static final String[] COLUMNS = {
             "Модель", "Бренд", "Мп", "Цена", "Год",
@@ -98,6 +109,8 @@ public class Gui {
                 e -> createTableByCountStrings(manager));
         buttonUpdateStatistic.addActionListener(event -> updateStatistic());
 
+        buttonForSaveTablesDataToPDF.addActionListener(event -> exportTableToPDF());
+
         this.updateStatistic();
 
         outputFunctions.debugLog("Конструктор класса GUI");
@@ -105,8 +118,9 @@ public class Gui {
 
 
     /**
-     * Функция для поиска в таблице камеры с самой низкой ценой и индикации
-     * найденной камеры в отдельный лебл блока результатов вычислительных функций
+     * Функция для поиска в таблице самой выгодной камеры по цене, пробегу и
+     * комплектному объективу, вывод найденной камеры в отдельный лебл
+     * блока результатов вычислительных функций
      *
      * @param dataMas - принимает двумерный массив с данными таблицы
      */
@@ -159,10 +173,30 @@ public class Gui {
                 "(пробег, цена, объектив): \n    " + resultText);
     }
 
+    /**
+     * Функция для рекурсии - нахождения минимального значения
+     *
+     * @param dataMas = двумерный массив с данными можели таблицы
+     * @param index = первое сравниваемое значение
+     * @param bestIndex = второе сравниваемое значение
+     * @return индекс найденной строки с камерой, имеющей наименьшую цену
+     */
+    public int findMinimal(Object[][] dataMas,int index, int bestIndex){
+        if (index == tableModel.getRowCount()) {
+            return bestIndex;
+        }
+
+        int current = Integer.parseInt(dataMas[index][3].toString().trim());
+        int best    = Integer.parseInt(dataMas[bestIndex][3].toString().trim());
+        if (current < best) {
+            bestIndex = index;
+        }
+        return findMinimal(dataMas, index + 1, bestIndex);
+    }
+
 
     /**
-     * Функция для нахождения самой "выгодной" камеры из списка (проверка на минимально
-     * возможные пробег, цену и наличие объектива в комплекте) и показ найденного
+     * Функция для нахождения самой дешёвой камеры из ьаблицы и показ найденного
      * экземпляра в лейбле в блоке результатов работы функций-обработчиков данных таблицы
      *
      * @param dataMas - принимает двумерный массив с данными из таблицы
@@ -176,17 +210,7 @@ public class Gui {
             return;
         }
 
-        int requiredCameraPrice = Integer.parseInt(dataMas[0][3].toString().trim());
-
-        int requiredCameraIndex = 0;
-
-        for (int i = 1; i < tableModel.getRowCount(); i++) {
-            int currentCameraPrice = Integer.parseInt(dataMas[i][3].toString().trim());
-            if (currentCameraPrice < requiredCameraPrice) {
-                requiredCameraPrice = currentCameraPrice;
-                requiredCameraIndex = i;
-            }
-        }
+        int requiredCameraIndex = findMinimal(dataMas, 0, 0);
 
         String resultText = String.format(
                 "%s (%s), серийный номер: %d, пробег %d, цена %d, " +
@@ -438,6 +462,7 @@ public class Gui {
 
     /**
      * Функция для получения данных таблицы.
+     *
      * @return Object[][] - возвращает двумерный массив с данными из ячеек таблицы
      */
     public Object[][] getDataFromTable(){
@@ -452,9 +477,87 @@ public class Gui {
         return data;
     }
 
+    /**
+     * Функция для создания ПДФ документа по данным таблицы.
+     *
+     * @param filePath принимает путь сохранения ПДФ
+     */
+    public void exportToPdf(String filePath) {
+        Document document = new Document(PageSize.A4.rotate());
+        try {
+            PdfWriter.getInstance(document, new FileOutputStream(filePath));
+            document.open();
+
+            PdfPTable pdfTable = new PdfPTable(tableModel.getColumnCount());
+            pdfTable.setWidthPercentage(100);
+
+            String[] COLUMNS_Eng = {
+                    "Model", "Brand", "Mp", "Price", "Year",
+                    "Equipment", "Lens", "Serial number", "Mileage"
+            };
+
+            for (String header : COLUMNS_Eng) {
+                PdfPCell headerCell = new PdfPCell(new Phrase(header));
+                headerCell.setBackgroundColor(BaseColor.LIGHT_GRAY);
+                pdfTable.addCell(headerCell);
+            }
+
+            for (int row = 0; row < tableModel.getRowCount(); row++) {
+                for (int col = 0; col < tableModel.getColumnCount(); col++) {
+                    Object value = tableModel.getValueAt(row, col);
+                    pdfTable.addCell(value == null ? "" : value.toString());
+                }
+            }
+
+            document.add(pdfTable);
+            document.close();
+
+            outputFunctions.simpleLog("Таблица успешно экспортирована в PDF: " + filePath);
+        } catch (Exception e) {
+            outputFunctions.warningLog("Ошибка при создании PDF: " + e.getMessage());
+            JOptionPane.showMessageDialog(contentPane,
+                    "Не удалось сохранить PDF: " + e.getMessage(),
+                    "Ошибка экспорта", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+
+    /**
+     * Обработчик нажатия кнопки «Экспорт в PDF».
+     * Открывает диалог выбора файла, добавляет расширение .pdf,
+     * если пользователь его не указал, и запускает экспорт таблицы.
+     */
+    public void exportTableToPDF() {
+        if (tableModel.getRowCount() == 0) {
+            JOptionPane.showMessageDialog(contentPane,
+                    "Таблица пуста — нечего экспортировать",
+                    "Экспорт в PDF", JOptionPane.WARNING_MESSAGE);
+            outputFunctions.warningLog("Попытка экспорта пустой таблицы");
+            return;
+        }
+
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Сохранить таблицу как PDF");
+        fileChooser.setSelectedFile(new java.io.File("cameras.pdf"));
+
+        int userSelection = fileChooser.showSaveDialog(contentPane);
+        if (userSelection != JFileChooser.APPROVE_OPTION) {
+            outputFunctions.debugLog("Экспорт в PDF отменён пользователем");
+            return;
+        }
+
+        String path = fileChooser.getSelectedFile().getAbsolutePath();
+        if (!path.toLowerCase().endsWith(".pdf")) {
+            path += ".pdf";
+        }
+
+        exportToPdf(path);
+    }
+
 
     /**
      * Функция для получения панели с Gui-элементами
+     *
      * @return возвражает объект JPanel, который содержит все виджеты окна,
      * созданные в Swing Designer
      */
