@@ -8,6 +8,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
 
+
 /**
  * Класс, автоматически созданный Swing Designer, для работы с
  * пользовательским интерфейсом и выводом данных на таблицу,
@@ -248,7 +249,11 @@ public class Gui {
                 "Найдена камера с минимальным пробегом: \n" + resultText);
     }
 
-
+    /**
+     * Функция для вычисления средней цены среди всех цен камер в каталоге
+     *
+     * @param dataMas двумерный массив с данными модели таблицы
+     */
     public void calculateMediumPrice(Object[][] dataMas){
 
         if (tableModel.getRowCount() == 0) {
