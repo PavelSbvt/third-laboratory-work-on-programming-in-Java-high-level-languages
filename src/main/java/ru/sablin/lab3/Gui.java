@@ -513,6 +513,7 @@ public class Gui {
             document.close();
 
             outputFunctions.simpleLog("Таблица успешно экспортирована в PDF: " + filePath);
+
         } catch (Exception e) {
             outputFunctions.warningLog("Ошибка при создании PDF: " + e.getMessage());
             JOptionPane.showMessageDialog(contentPane,
@@ -538,7 +539,7 @@ public class Gui {
 
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Сохранить таблицу как PDF");
-        fileChooser.setSelectedFile(new java.io.File("cameras.pdf"));
+        fileChooser.setSelectedFile(new java.io.File("table-with-cameras.pdf"));
 
         int userSelection = fileChooser.showSaveDialog(contentPane);
         if (userSelection != JFileChooser.APPROVE_OPTION) {
