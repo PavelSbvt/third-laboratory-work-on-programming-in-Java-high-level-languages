@@ -1,105 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="ru.sablin.lab3.Gui">
-  <grid id="27dc6" binding="contentPane" layout-manager="GridLayoutManager" row-count="7" column-count="9" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="contentPane" layout-manager="GridLayoutManager" row-count="7" column-count="10" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="1589" height="795"/>
+      <xy x="20" y="20" width="1329" height="853"/>
     </constraints>
     <properties>
       <background color="-608617"/>
     </properties>
     <border type="none"/>
     <children>
-      <vspacer id="65d48">
-        <constraints>
-          <grid row="1" column="0" row-span="1" col-span="9" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-        </constraints>
-      </vspacer>
-      <grid id="5729" binding="panelForInputCountStrings" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-        <margin top="10" left="10" bottom="10" right="10"/>
-        <constraints>
-          <grid row="0" column="4" row-span="1" col-span="5" vsize-policy="3" hsize-policy="3" anchor="4" fill="2" indent="0" use-parent-layout="false">
-            <maximum-size width="250" height="-1"/>
-          </grid>
-        </constraints>
-        <properties>
-          <background color="-13559790"/>
-        </properties>
-        <border type="none"/>
-        <children>
-          <component id="ead80" class="javax.swing.JLabel" binding="titleForInputCountStringsUserWants">
-            <constraints>
-              <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <background color="-2516357"/>
-              <font name="JetBrains Mono" size="12" style="1"/>
-              <foreground color="-3613"/>
-              <horizontalAlignment value="0"/>
-              <text value="Задайте количество строк"/>
-              <toolTipText value="Введите количество строк в таблице"/>
-            </properties>
-          </component>
-          <component id="a15c" class="javax.swing.JTextField" binding="inputCountStrings">
-            <constraints>
-              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="150" height="-1"/>
-                <maximum-size width="50" height="30"/>
-              </grid>
-            </constraints>
-            <properties>
-              <background color="-2516357"/>
-              <font name="JetBrains Mono" size="11" style="1"/>
-              <foreground color="-12640490"/>
-              <horizontalAlignment value="0"/>
-            </properties>
-          </component>
-          <component id="a521a" class="javax.swing.JButton" binding="buttonForCreateTableByInputCountStrings">
-            <constraints>
-              <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
-                <minimum-size width="150" height="-1"/>
-                <maximum-size width="200" height="-1"/>
-              </grid>
-            </constraints>
-            <properties>
-              <background color="-727079"/>
-              <font name="JetBrains Mono" size="10" style="1"/>
-              <foreground color="-13559790"/>
-              <horizontalAlignment value="0"/>
-              <text value="Добавить в таблицу таблицу"/>
-            </properties>
-          </component>
-        </children>
-      </grid>
-      <grid id="5e77d" binding="panelForWindowTitle" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-        <margin top="10" left="10" bottom="10" right="10"/>
-        <constraints>
-          <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false">
-            <maximum-size width="180" height="-1"/>
-          </grid>
-        </constraints>
-        <properties>
-          <background color="-13559790"/>
-        </properties>
-        <border type="none"/>
-        <children>
-          <component id="735e2" class="javax.swing.JLabel" binding="windowTitle">
-            <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <background color="-6104682"/>
-              <font name="JetBrains Mono" size="12" style="1"/>
-              <foreground color="-3613"/>
-              <text value="Фотоаппараты - каталог"/>
-            </properties>
-          </component>
-        </children>
-      </grid>
       <grid id="ef663" binding="addCameraPanel" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="10" left="10" bottom="10" right="10"/>
         <constraints>
-          <grid row="3" column="0" row-span="1" col-span="9" vsize-policy="3" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false">
+          <grid row="3" column="0" row-span="1" col-span="10" vsize-policy="3" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false">
             <minimum-size width="1100" height="-1"/>
             <maximum-size width="1100" height="-1"/>
           </grid>
@@ -343,7 +257,7 @@
       </grid>
       <scrollpane id="a708b" binding="scrollPaneForTable">
         <constraints>
-          <grid row="2" column="0" row-span="1" col-span="9" vsize-policy="7" hsize-policy="7" anchor="1" fill="0" indent="0" use-parent-layout="false">
+          <grid row="2" column="0" row-span="1" col-span="10" vsize-policy="7" hsize-policy="7" anchor="1" fill="0" indent="0" use-parent-layout="false">
             <minimum-size width="1100" height="-1"/>
             <maximum-size width="1100" height="-1"/>
           </grid>
@@ -377,7 +291,7 @@
       <grid id="ae4ad" binding="panelForOutputResultsFunctions" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="10" left="10" bottom="10" right="10"/>
         <constraints>
-          <grid row="5" column="0" row-span="1" col-span="9" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+          <grid row="5" column="0" row-span="1" col-span="10" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
             <minimum-size width="1200" height="-1"/>
             <maximum-size width="1200" height="-1"/>
           </grid>
@@ -399,7 +313,7 @@
               <text value="Вывод результатов вычислений"/>
             </properties>
           </component>
-          <grid id="4e6b3" binding="lightBackgroundPanelForOutputResultsBlock" layout-manager="GridLayoutManager" row-count="3" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="4e6b3" binding="lightBackgroundPanelForOutputResultsBlock" layout-manager="GridLayoutManager" row-count="4" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="10" left="10" bottom="10" right="10"/>
             <constraints>
               <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -473,6 +387,26 @@
                   <text value="Label"/>
                 </properties>
               </component>
+              <component id="76915" class="javax.swing.JLabel" binding="averagePrice">
+                <constraints>
+                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font name="JetBrains Mono" size="12" style="1"/>
+                  <foreground color="-13559790"/>
+                  <text value="Средняя цена камер в каталоге"/>
+                </properties>
+              </component>
+              <component id="c5e70" class="javax.swing.JLabel" binding="labelForoutputAvaragePrice">
+                <constraints>
+                  <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font name="JetBrains Mono" size="12" style="1"/>
+                  <foreground color="-13559790"/>
+                  <text value="Label"/>
+                </properties>
+              </component>
             </children>
           </grid>
           <component id="f1871" class="javax.swing.JButton" binding="buttonUpdateStatistic">
@@ -495,17 +429,118 @@
       </grid>
       <vspacer id="d94b8">
         <constraints>
-          <grid row="4" column="0" row-span="1" col-span="9" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <grid row="4" column="0" row-span="1" col-span="10" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
         </constraints>
       </vspacer>
-      <hspacer id="9bf76">
-        <constraints>
-          <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-      </hspacer>
       <vspacer id="d9bb2">
         <constraints>
-          <grid row="6" column="0" row-span="1" col-span="9" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <grid row="6" column="0" row-span="1" col-span="10" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <grid id="4cc9" binding="panelForGroupUpeerWidgets" layout-manager="GridLayoutManager" row-count="1" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="10" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <minimum-size width="1200" height="-1"/>
+            <maximum-size width="1200" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-609390"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <grid id="5e77d" binding="panelForWindowTitle" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="10" left="10" bottom="10" right="10"/>
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                <maximum-size width="180" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-13559790"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="735e2" class="javax.swing.JLabel" binding="windowTitle">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-6104682"/>
+                  <font name="JetBrains Mono" size="12" style="1"/>
+                  <foreground color="-3613"/>
+                  <text value="Фотоаппараты - каталог"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="5729" binding="panelForInputCountStrings" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="10" left="10" bottom="10" right="10"/>
+            <constraints>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="4" fill="2" indent="0" use-parent-layout="false">
+                <maximum-size width="250" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-13559790"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="ead80" class="javax.swing.JLabel" binding="titleForInputCountStringsUserWants">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-2516357"/>
+                  <font name="JetBrains Mono" size="12" style="1"/>
+                  <foreground color="-3613"/>
+                  <horizontalAlignment value="0"/>
+                  <text value="Задайте количество строк"/>
+                  <toolTipText value="Введите количество строк в таблице"/>
+                </properties>
+              </component>
+              <component id="a15c" class="javax.swing.JTextField" binding="inputCountStrings">
+                <constraints>
+                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="-1"/>
+                    <maximum-size width="50" height="30"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-2516357"/>
+                  <font name="JetBrains Mono" size="11" style="1"/>
+                  <foreground color="-12640490"/>
+                  <horizontalAlignment value="0"/>
+                </properties>
+              </component>
+              <component id="a521a" class="javax.swing.JButton" binding="buttonForCreateTableByInputCountStrings">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="150" height="-1"/>
+                    <maximum-size width="200" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-727079"/>
+                  <font name="JetBrains Mono" size="10" style="1"/>
+                  <foreground color="-13559790"/>
+                  <horizontalAlignment value="0"/>
+                  <text value="Добавить в таблицу таблицу"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <hspacer id="24f09">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </hspacer>
+        </children>
+      </grid>
+      <vspacer id="cc51b">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
         </constraints>
       </vspacer>
     </children>

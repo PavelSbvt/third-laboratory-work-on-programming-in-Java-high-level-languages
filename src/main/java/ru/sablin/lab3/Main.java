@@ -25,7 +25,7 @@ public class Main {
 
         frame.setContentPane(scroll);
 
-        frame.setSize(1200, 900);
+        frame.setSize(1250, 900);
         frame.setMinimumSize(new java.awt.Dimension(500, 400));
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);

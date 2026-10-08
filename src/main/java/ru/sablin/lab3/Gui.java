@@ -4,7 +4,6 @@ import ru.sablin.lab3.model.Cameras;
 import ru.sablin.lab3.model.CamerasManager;
 import ru.sablin.lab3.util.outputFunctions;
 
-import java.util.List;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -57,6 +56,9 @@ public class Gui {
     private JLabel labelForOutputMostProfitableCameraFromMileagePriceAndLens;
     private JPanel panelForWindowTitle;
     private JButton buttonUpdateStatistic;
+    private JLabel averagePrice;
+    private JLabel labelForoutputAvaragePrice;
+    private JPanel panelForGroupUpeerWidgets;
 
     private static final String[] COLUMNS = {
             "Модель", "Бренд", "Мп", "Цена", "Год",
@@ -245,6 +247,9 @@ public class Gui {
         outputFunctions.simpleLog(
                 "Найдена камера с минимальным пробегом: \n" + resultText);
     }
+
+
+//    public void calculate
 
 
     /**
