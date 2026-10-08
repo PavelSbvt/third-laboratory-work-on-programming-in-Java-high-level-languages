@@ -133,6 +133,9 @@ public class Gui {
                 requiredCameraPrice)
                 && (currentCameraEquipment.equals("kit")
                 || currentCameraEquipment.equals("set"))) {
+                    requiredCameraPrice = currentCameraPrice;
+                    requiredCameraMileage = currentCameraMileage;
+                    requiredCameraEquipment = currentCameraEquipment;
                     requiredCameraIndex = i;
             }
         }
@@ -142,9 +145,9 @@ public class Gui {
                 "комплектация %s, объектив %s",
                 dataMas[requiredCameraIndex][0],
                 dataMas[requiredCameraIndex][1],
-                (Integer) dataMas[requiredCameraIndex][7],
-                (Integer) dataMas[requiredCameraIndex][8],
-                (Integer) dataMas[requiredCameraIndex][3],
+                Integer.parseInt(dataMas[requiredCameraIndex][7].toString().trim()),
+                Integer.parseInt(dataMas[requiredCameraIndex][8].toString().trim()),
+                Integer.parseInt(dataMas[requiredCameraIndex][3].toString().trim()),
                 dataMas[requiredCameraIndex][5],
                 dataMas[requiredCameraIndex][6]);
 
@@ -187,9 +190,9 @@ public class Gui {
                 "комплектация %s, объектив %s",
                 dataMas[requiredCameraIndex][0],
                 dataMas[requiredCameraIndex][1],
-                (Integer) dataMas[requiredCameraIndex][7],
-                (Integer) dataMas[requiredCameraIndex][8],
-                (Integer) dataMas[requiredCameraIndex][3],
+                Integer.parseInt(dataMas[requiredCameraIndex][7].toString().trim()),
+                Integer.parseInt(dataMas[requiredCameraIndex][8].toString().trim()),
+                Integer.parseInt(dataMas[requiredCameraIndex][3].toString().trim()),
                 dataMas[requiredCameraIndex][5],
                 dataMas[requiredCameraIndex][6]);
 
@@ -230,13 +233,13 @@ public class Gui {
         String resultText = String.format(
                 "%s (%s), серийный номер: %d, пробег %d, цена %d," +
                 " комплектация %s, объектив %s",
-                (String) dataMas[indexCameraWithMinMileage][0],
-                (String) dataMas[indexCameraWithMinMileage][1],
-                (Integer) dataMas[indexCameraWithMinMileage][7],
-                Integer.parseInt(dataMas[0][8].toString().trim()),
-                (Integer) dataMas[indexCameraWithMinMileage][3],
-                (String) dataMas[indexCameraWithMinMileage][5],
-                (String) dataMas[indexCameraWithMinMileage][6]);
+                dataMas[indexCameraWithMinMileage][0],
+                dataMas[indexCameraWithMinMileage][1],
+                Integer.parseInt(dataMas[indexCameraWithMinMileage][7].toString().trim()),
+                Integer.parseInt(dataMas[indexCameraWithMinMileage][8].toString().trim()),
+                Integer.parseInt(dataMas[indexCameraWithMinMileage][3].toString().trim()),
+                dataMas[indexCameraWithMinMileage][5],
+                dataMas[indexCameraWithMinMileage][6]);
 
         labelForOutputFindedNotMostWearedCamera.setText(resultText);
         outputFunctions.simpleLog(
