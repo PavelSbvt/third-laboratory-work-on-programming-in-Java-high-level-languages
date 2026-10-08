@@ -249,11 +249,41 @@ public class Gui {
     }
 
 
-//    public void calculate
+    public void calculateMediumPrice(Object[][] dataMas){
+
+        if (tableModel.getRowCount() == 0) {
+            labelForoutputAvaragePrice.setText("Список камер пуст");
+            outputFunctions.warningLog(
+                    "Список камер пуст, невозможно найти средюю цену");
+            return;
+        }
+
+        int[] massiveWithPrices = new int [tableModel.getRowCount()];
+
+        for (int i = 0; i < tableModel.getRowCount(); i++){
+            int currentPrice = Integer.parseInt(dataMas[i][3].toString().trim());
+            massiveWithPrices[i] = currentPrice;
+        }
+
+        int totalPrice = 0;
+
+        for (int price : massiveWithPrices){
+            totalPrice += price;
+        }
+
+        int mediumPrice = totalPrice / tableModel.getRowCount();
+
+        String resultText = String.format(
+                "Средняя цена среди всех камер: %d",
+                mediumPrice);
+
+        labelForoutputAvaragePrice.setText(resultText);
+        outputFunctions.simpleLog("Средняя цена среди всез камер: " + mediumPrice);
+    }
 
 
     /**
-     * Функция для создания и доавления в таблицу строк, число которых указывает сам
+     * Функция для создания и добавления в таблицу строк, число которых указывает сам
      * пользователь в отдельном блоке, с случайными полями (часть - случайно заполненные)
      *
      * @param manager - принимает объект класса CamerasManager
@@ -297,6 +327,7 @@ public class Gui {
                 tableData);
         this.setTextForLabelWithMostProfitableCameraFromPriceMileageAndLens(
                 tableData);
+        this.calculateMediumPrice(tableData);
     }
 
 
