@@ -8,7 +8,7 @@ ___
 
 ![defoult_run_app_img](doc/images/readme/screenshot-defoult-run.png)
 
-### External tool для заапуска проекта из cmd:
+### External tool для запуска проекта из cmd:
 
 ![screenshoot_show_setting_created_external_tool](
 doc/images/readme/img-for-instruction-to-create-external-tool.png)
