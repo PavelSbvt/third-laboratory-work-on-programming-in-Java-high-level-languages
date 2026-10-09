@@ -85,6 +85,7 @@ public class Gui {
         tableModel = new DefaultTableModel(COLUMNS, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
+//                return column != 7; - так можно запретить редактирование столбца
                 return true;
             }
         };
@@ -173,13 +174,14 @@ public class Gui {
                 "(пробег, цена, объектив): \n    " + resultText);
     }
 
+
     /**
-     * Функция для рекурсии - нахождения минимального значения
+     * Рекурсивно находит индекс строки с минимальной ценой.
      *
-     * @param dataMas = двумерный массив с данными можели таблицы
-     * @param index = первое сравниваемое значение
-     * @param bestIndex = второе сравниваемое значение
-     * @return индекс найденной строки с камерой, имеющей наименьшую цену
+     * @param dataMas   двумерный массив с данными таблицы
+     * @param index     текущий индекс
+     * @param bestIndex индекс наименьшей по цене камеры на данный момент
+     * @return индекс строки с минимальной ценой
      */
     public int findMinimal(Object[][] dataMas,int index, int bestIndex){
         if (index == tableModel.getRowCount()) {
@@ -272,6 +274,7 @@ public class Gui {
         outputFunctions.simpleLog(
                 "Найдена камера с минимальным пробегом: \n    " + resultText);
     }
+
 
     /**
      * Функция для вычисления средней цены среди всех цен камер в каталоге
@@ -476,6 +479,7 @@ public class Gui {
 
         return data;
     }
+
 
     /**
      * Функция для создания ПДФ документа по данным таблицы.
